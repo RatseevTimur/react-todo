@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{ useEffect, useState } from 'react';
 import ToDo from './ToDo'
 import ToDoForm from './ToDoForm'
 
@@ -39,7 +39,7 @@ function App() {
 
   function editSave(id) {
     let editTodo = [...todos].map( todo => {
-      if(todo.id == id){
+      if(todo.id === id){
         todo.task = value 
       }
       return todo
@@ -48,13 +48,21 @@ function App() {
     setEdit(null)
   }
 
+  useEffect( ()=> {
+    setFiltered(todos)
+  },[todos])
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
   function todoFilter (status) {
     if(status==='all'){
       setFiltered(todos)
     }
     else{
-      let newTodo = [...todos].filter(todo => todo.complete === status)
-      setFiltered(todos)
+      let newTodos = [...todos].filter(todo => todo.complete === status)
+      setFiltered(newTodos)
     }
   }
 
@@ -100,18 +108,18 @@ function App() {
         <div class="form">
           <div class="elements left-elements">
           <button class="filter"
-          onClik={()=>todoFilter('all')}>Список</button>
+          onClick={()=>todoFilter('all')}>Список</button>
           <button class="filter"
-          onClik={()=>todoFilter(false)}>Напоминания</button>
+          onClick={()=>todoFilter(false)}>Напоминания</button>
           <button class="filter"
-          onClik={()=>todoFilter(true)}>Ещё</button>
+          onClick={()=>todoFilter(true)}>Ещё</button>
           </div>
           <div class="elements right-elements">
             <ToDoForm addTask={addTask}/>
           </div>
         </div>
         <div class="todo">
-          {todos.map((todo) => {
+          {filtered.map((todo, setTodos) => {
             return (
               <ToDo
                 todo={todo}
@@ -123,15 +131,16 @@ function App() {
                 setValue={setValue}
                 value={value}
                 editSave={editSave}
+                setTodos={setTodos}
               />
             )
           })}
         </div>
         
         <footer>
-          <div class="footup">
+          <div class="foot-up">
             <a class="foot-logo" href="">JUSTICE</a>
-            <ul class="footul">
+            <ul class="foot-ul">
               <li><a class="tabs" href="/">Главная</a></li>
               <li><a class="tabs" href="/list">Список</a></li>
               <li><a class="tabs" href="/friends">Друзья</a></li>
@@ -139,7 +148,7 @@ function App() {
             </ul>
           </div>
           <hr class="hr"></hr>
-          <div class="footdown">
+          <div class="foot-down">
             <a>© 2021 Justice-team. All rights reserved.</a>
             <ul>
               <li><a>Terms & conditions</a></li>
