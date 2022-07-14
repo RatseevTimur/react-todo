@@ -201,6 +201,11 @@ background: #4448DA;
 border-radius: 8px;
 border: 0;
 }
+.add b{
+  position: relative;
+  font-size: 20px;
+  top: 2px;
+}
 input:placeholder-shown+input:placeholder-shown+button,
 input:placeholder-shown+button {
   background-color: rgb(209, 209, 209);
@@ -260,6 +265,9 @@ margin: 0px 10px 0px 0px;
     background-image: url('./icon/plus.svg');
     background-repeat: no-repeat;
     background-position: center ;
+  }
+  .add b{
+    display: none;
   }
 }
 

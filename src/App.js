@@ -10,7 +10,7 @@ import { Listpage } from './pages/Listpage'
 import { Friendspage } from './pages/Friendspage'
 import { Contactspage } from './pages/Contactspage'
 function App() {
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState(()=>JSON.parse(localStorage.getItem('todos')||[]))
 
   const [edit, setEdit] = useState(null)
   const [value, setValue] = useState('')
@@ -131,7 +131,6 @@ function App() {
                 setValue={setValue}
                 value={value}
                 editSave={editSave}
-                setTodos={setTodos}
               />
             )
           })}

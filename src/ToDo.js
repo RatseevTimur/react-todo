@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ToDo({ todo, toggleTask, removeTask, editTask, edit, setValue, value, editSave, setTodos }) {
+function ToDo({ todo, toggleTask, removeTask, editTask, edit, setValue, value, editSave }) {
     const handleKeyPress = (e) => {
         if(e.key === "Enter") {
             editSave(todo.id)

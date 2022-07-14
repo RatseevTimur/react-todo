@@ -29,7 +29,7 @@ function ToDoForm({ addTask }) {
                 onKeyDown={handleKeyPress}
                 placeholder="Введите текст"
             />        
-            <button class="add">Добавить +<div class="d24"></div></button>
+            <button class="add">Добавить <b>+</b><div class="d24"></div></button>
         </form>
     )
 }
