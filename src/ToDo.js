@@ -1,6 +1,11 @@
 import React from 'react';
 
 function ToDo({ todo, toggleTask, removeTask, editTask, edit, setValue, value, editSave, setTodos }) {
+    const handleKeyPress = (e) => {
+        if(e.key === "Enter") {
+            editSave(todo.id)
+        }
+    }
     return (
         <div key={todo.id} className="item-todo">
            
@@ -14,8 +19,9 @@ function ToDo({ todo, toggleTask, removeTask, editTask, edit, setValue, value, e
                         <input 
                         class="edit-input" 
                         autoFocus
+                        onKeyDown={handleKeyPress}
                         onChange={(e)=>setValue(e.target.value)} value={value}/>
-                        <button onClick={()=>editSave(todo.id)}>Редактировать</button>
+                        <button class="edit-save" onClick={()=>editSave(todo.id)}>Редактировать</button>
                     </div>:
                     <div class="unselectable">{ todo.task }</div>
                 }

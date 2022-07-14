@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;700&display=swap');
+
 .top-menu {
   position: relative;
   margin: 0 auto;
@@ -13,7 +15,7 @@ text-decoration: none;
 position: absolute;
 top: 35%;
 left: 0px;
-font-family: 'Montserrat';
+font-family: 'Rubik', sans-serif;
 font-style: normal;
 font-weight: 700;
 font-size: 24px;
@@ -27,13 +29,13 @@ color: #4448DA;
 }
 .menu-main li {display: inline-block;}
 .menu-main a {
+  font-family: 'Rubik', sans-serif;
   display: block;
   line-height: 61px;
   padding-left: 20px;
   font-size: 18px;
   letter-spacing: 2px;
-  font-family: 'Inter';
-  font-weight: bold;
+  font-weight: 300;
   color: rgb(31,31,31,1);
   position: relative;
 	cursor: pointer;
@@ -45,7 +47,7 @@ color: #4448DA;
   top: 40px;
 	left: 5;
 	width: 0;
-	height: 2px;
+	height: 1px;
 	background-color:rgb(31,31,31,1);
   content: "";
 	transition: width 0.3s ease-out;
@@ -73,11 +75,15 @@ color: #4448DA;
 
 .comein{
 box-sizing: border-box;
+background-color: transparent;
 width: 92px;
 height: 38px;
 color: #4448DA;
 border: 1px solid #4448DA;
 border-radius: 8px;
+}
+.comein:hover{
+  background-color: rgba(244, 245, 244, 1);
 }
 .bell{
   position: relative;
@@ -87,6 +93,35 @@ border-radius: 8px;
   width: 19px;
   height: 20.5px;
   background: url(./icon/Bell.svg);
+  background-repeat: no-repeat;
+  background-position: center ;
+}
+.bell:hover{
+  background-color: #fca292;
+  animation: pulse 1.2s infinite;
+}
+@keyframes pulse {
+	0% {
+		-moz-box-shadow: 0 0 0 0 #e73617;
+		box-shadow: 0 0 0 0 #e73617;
+    transform: rotate(-20deg);
+	}
+  25% {
+    transform: rotate(0deg);
+	}
+  50% {
+    transform: rotate(20deg);
+	}
+	75% {
+		-moz-box-shadow: 0 0 0 10px #fca292;
+		box-shadow: 0 0 0 10px #fca292;
+    transform: rotate(0deg);
+	}
+	100% {
+		-moz-box-shadow: 0 0 0 0 #fca292;
+		box-shadow: 0 0 0 0 #fca292;
+    transform: rotate(-20deg);
+	}
 }
 .user {
   position: relative;
@@ -96,6 +131,13 @@ border-radius: 8px;
   width: 48px;
   height: 48px;
   background-image: url(./icon/User.svg);
+  background-repeat: no-repeat;
+  background-position: center ;
+}
+.user:hover{
+  background-size: 44px;
+  background-color: #fca292;
+  transition: 1s ease-out;
 }
 
 /*Выпадающее меню*/
@@ -159,6 +201,14 @@ background: #4448DA;
 border-radius: 8px;
 border: 0;
 }
+input:placeholder-shown+input:placeholder-shown+button,
+input:placeholder-shown+button {
+  background-color: rgb(209, 209, 209);
+}
+
+input:not(:placeholder-shown)+input:not(:placeholder-shown)+button {
+  background-color: #4448DA;
+}
 .elements {
   left: 0px;
   list-style: none;
@@ -173,9 +223,12 @@ border: 0;
 .filter{
 height: 46px;
 border: 1px solid #F4F5F4;
-background-color: rgba(244, 245, 244, 1);
+background-color: transparent;
 border-radius: 8px;
 margin: 0px 10px 0px 0px;
+}
+.filter:hover{
+  background-color: rgba(244, 245, 244, 1);
 }
 @media (max-width: 768px) {
   .form{
@@ -244,7 +297,12 @@ margin: 0px 10px 0px 0px;
   outline: none;
   background: transparent;
 }
-
+.edit-save{
+border: 1px solid #2b2b2b;
+background-color: transparent;
+border-radius: 6px;
+margin: 0px 0px 0px 5px;
+}
 
 .unselectable {
   -webkit-touch-callout: none;
@@ -301,20 +359,23 @@ margin: 0px 10px 0px 0px;
 footer {
   width: 100%;
   height: 185px;
-  background-color: rgba(11, 14, 39, 1);
+  background-color: rgba(11, 14, 39);
+  font-family: 'Rubik', sans-serif;
+  font-weight: 300;
 }
 .foot-up {
+  justify-content: space-between;
+  margin: 0px 5%;
   display: flex;
   align-items: center;
-  justify-content: center;
   height: 60%;
 }
 .foot-logo{
-  margin-right: 40%;
+  margin-right: 35%;
   text-decoration: none;
   left: 148px;
   top: 1076px;
-  font-family: 'Montserrat';
+  font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -326,9 +387,10 @@ footer {
 }
 .foot-ul li {
   display: inline-block;
-  margin: 8px;
+  margin: 2px 8px;
 }
 .tabs{
+  font-family: 'Rubik', sans-serif;
   text-decoration: none;
   color: #FFFFFF;
 }
@@ -350,5 +412,41 @@ footer {
 }
 .foot-down li{
   display: inline-block;
+  float: right;
   margin: 0 20px;
+}
+@media (max-width: 400px) {
+  footer {
+    height: 375px;
+  }
+  .foot-up {
+    margin: 0px 0px;
+    position: relative;
+    top: 20px;
+    left: 20px;
+    height: 65%;
+    display: inline-block;
+    float: left;
+  }
+  .foot-logo{
+    float: left;
+  }
+  .foot-ul {
+    float: left;
+  }
+  .foot-ul li {
+    position: relative;
+    display: flex;
+    left: -40px;
+    margin: 10px 0px;
+  }
+  .foot-down{
+    display: flex;
+    flex-direction: column;
+  }
+  .foot-down ul{
+    display: flex;
+    margin: 8px 0px 0px -50px;
+  }
+
 }
